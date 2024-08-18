@@ -19,47 +19,20 @@
 
                 <li class="menu-title" key="t-apps">Gestion Colis</li>
 
+
                 <li>
                     <a href="colis.php" class="waves-effect">
                         <i class="bx bx-store"></i>
-                        <span key="t-calendar">Nos Transfert</span>
+                        <span key="t-calendar">Stock</span>
                     </a>
                 </li>
                 <li>
                     <a href="stock.php" class="waves-effect">
                         <i class="bx bx-store"></i>
-                        <span key="t-calendar">Stock</span>
+                        <span key="t-calendar">Nos Transfert</span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="chat.html" class="waves-effect">
-                        <i class="bx bxs-bar-chart-alt-2"></i>
-                        <span key="t-chat">Nos Statistiques</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-envelope"></i>
-                        <span key="t-email">Gestion Transfer</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html" key="t-inbox">Nos Colis</a></li>
-                        <li><a href="email-read.html" key="t-read-email">Nos Envois</a></li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <span class="badge rounded-pill badge-soft-success float-end" key="t-new">New</span>
-                                <span key="t-email-templates">Historique</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="email-template-basic.html" key="t-basic-action">Nos Colis</a></li>
-                                <li><a href="email-template-alert.html" key="t-alert-email">Nos Envois</a></li>
-                                <li><a href="email-template-billing.html" key="t-bill-email">Historique</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </div>
         <!-- Sidebar -->
