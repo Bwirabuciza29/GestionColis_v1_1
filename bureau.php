@@ -47,8 +47,8 @@ include("./blade/userAside.php")
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Entrées</p>
-                                            <h4 class="mb-0">1,235</h4>
+                                            <p class="text-muted fw-medium">Colis enregistrés</p>
+                                            <h4 class="mb-0"><?= htmlspecialchars($total_colis) ?></h4>
                                         </div>
 
                                         <div class="flex-shrink-0 align-self-center">
@@ -62,13 +62,13 @@ include("./blade/userAside.php")
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <div class="card mini-stats-wid">
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Sorties</p>
-                                            <h4 class="mb-0">$35, 723</h4>
+                                            <p class="text-muted fw-medium">Colis Reçus</p>
+                                            <h4 class="mb-0"><?= $total_envois; ?></h4>
                                         </div>
 
                                         <div class="flex-shrink-0 align-self-center ">
@@ -82,26 +82,7 @@ include("./blade/userAside.php")
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card mini-stats-wid">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Stock</p>
-                                            <h4 class="mb-0">$16.2</h4>
-                                        </div>
 
-                                        <div class="flex-shrink-0 align-self-center">
-                                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                                <span class="avatar-title rounded-circle bg-primary">
-                                                    <i class="bx bx-purchase-tag-alt font-size-24"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <!-- end row -->
 

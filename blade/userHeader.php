@@ -110,6 +110,20 @@ $query->execute();
 $result = $query->fetch(PDO::FETCH_ASSOC);
 
 $total_colis = $result['total_colis'];
+// Récupérer les envois où l'utilisateur connecté est le destinataire
+$query = $conn->prepare("
+    SELECT Envoyer.id, Colis.reference_colis, Colis.description, Colis.date_embarquement, Colis.date_arrivee, 
+           Colis.bureau_depart, Colis.bureau_arrivee, Colis.photo
+    FROM Envoyer
+    JOIN Colis ON Envoyer.id_colis = Colis.id_colis
+    WHERE Envoyer.id_utilisateur = :user_id
+");
+$query->bindParam(':user_id', $_SESSION['user_id']);
+$query->execute();
+$envois = $query->fetchAll(PDO::FETCH_ASSOC);
+
+// Nombre d'envois reçus
+$total_envois = count($envois);
 ?>
 
 
