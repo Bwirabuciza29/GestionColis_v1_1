@@ -4,17 +4,16 @@ include("./blade/userAside.php");
 // Inclure la configuration de la base de données
 include('config.php');
 // Récupérer la liste des autres utilisateurs
-$query = $conn->prepare("SELECT id_utilisateur, nom_utilisateur FROM Utilisateur WHERE id_utilisateur != :current_user_id");
-$query->bindParam(':current_user_id', $_SESSION['user_id']);
+$query = $conn->prepare("SELECT id_utilisateur, nom_utilisateur FROM utilisateur WHERE id_utilisateur != :id_utilisateur");
+$query->bindParam(':id_utilisateur', $_SESSION['user_id']);
 $query->execute();
-$utilisateurs = $query->fetchAll(PDO::FETCH_ASSOC);
+$autres_utilisateurs = $query->fetchAll(PDO::FETCH_ASSOC);
 
-// Récupérer la liste des colis enregistrés par cet utilisateur
-$query = $conn->prepare("SELECT id_colis, reference_colis, description FROM Colis WHERE created_by = :current_user_id");
-$query->bindParam(':current_user_id', $_SESSION['user_id']);
+// Récupérer la liste des colis de l'utilisateur connecté
+$query = $conn->prepare("SELECT id_colis, reference_colis, description FROM colis WHERE created_by = :created_by");
+$query->bindParam(':created_by', $_SESSION['user_id']);
 $query->execute();
-$colis = $query->fetchAll(PDO::FETCH_ASSOC);
-
+$colis_utilisateur = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
 // Récupérer les envois où l'utilisateur connecté est le destinataire
@@ -110,29 +109,29 @@ $total_envois = count($envois);
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="enregistrer_envoi.php" method="POST">
+                                                            <form action="envoyer.php" method="POST">
                                                                 <div class="mb-3">
-                                                                    <label for="id_utilisateur" class="form-label">Destinataire</label>
-                                                                    <select name="id_utilisateur" id="id_utilisateur" class="form-control" required>
-                                                                        <?php foreach ($utilisateurs as $utilisateur): ?>
+                                                                    <label for="id_utilisateur" class="form-label">Utilisateur Destinataire</label>
+                                                                    <select class="form-select" name="id_utilisateur" id="id_utilisateur" required>
+                                                                        <option value="">Sélectionner un utilisateur</option>
+                                                                        <?php foreach ($autres_utilisateurs as $utilisateur): ?>
                                                                             <option value="<?= $utilisateur['id_utilisateur'] ?>"><?= $utilisateur['nom_utilisateur'] ?></option>
                                                                         <?php endforeach; ?>
                                                                     </select>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="id_colis" class="form-label">Colis à envoyer</label>
-                                                                    <select name="id_colis" id="id_colis" class="form-control" required>
-                                                                        <?php foreach ($colis as $col): ?>
-                                                                            <option value="<?= $col['id_colis'] ?>"><?= $col['reference_colis'] ?> - <?= $col['description'] ?></option>
+                                                                    <label for="id_colis" class="form-label">Colis</label>
+                                                                    <select class="form-select" name="id_colis" id="id_colis" required>
+                                                                        <option value="">Sélectionner un colis</option>
+                                                                        <?php foreach ($colis_utilisateur as $colis): ?>
+                                                                            <option value="<?= $colis['id_colis'] ?>">
+                                                                                <?= $colis['reference_colis'] ?> - <?= $colis['description'] ?>
+                                                                            </option>
                                                                         <?php endforeach; ?>
                                                                     </select>
                                                                 </div>
-                                                                <div class="mb-3">
-                                                                    <label for="date_sortie" class="form-label">Date de sortie</label>
-                                                                    <input type="date" name="date_sortie" id="date_sortie" class="form-control" value="<?= date('Y-m-d') ?>" required>
-                                                                </div>
                                                                 <input type="hidden" name="created_by" value="<?= $_SESSION['user_id'] ?>">
-                                                                <button type="submit" class="btn btn-primary">Enregistrer l'envoi</button>
+                                                                <button type="submit" class="btn btn-primary">Enregistrer l'Envoi</button>
                                                             </form>
                                                         </div>
                                                     </div><!-- /.modal-content -->
