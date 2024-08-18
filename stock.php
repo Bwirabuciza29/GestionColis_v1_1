@@ -181,7 +181,9 @@ $total_envois = count($envois);
                                                         <td><?= $envoi['bureau_arrivee']; ?></td>
                                                         <td>
                                                             <!-- Bouton pour voir la photo (Modale) -->
-                                                            <a type="button" class="btn btn-outline-primary waves-effect waves-light" data-toggle="modal" data-target="#photoModal<?= $envoi['id']; ?>">Voir</a>
+                                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#photoModal<?= $envoi['id'] ?>">
+                                                                Voir Photo
+                                                            </button>
 
                                                             <!-- Bouton pour supprimer l'envoi -->
                                                             <form action="delete_envoi.php" method="POST" style="display:inline-block;">
