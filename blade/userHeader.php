@@ -92,7 +92,11 @@ $colis = $query->fetchAll(PDO::FETCH_ASSOC);
 
 // Récupérer les notifications pour l'utilisateur connecté
 $user_id = $_SESSION['user_id'];
-$query = $conn->prepare("SELECT * FROM notification WHERE id_utilisateur = :user_id ORDER BY date_notification DESC");
+$query = $conn->prepare("SELECT n.message, n.date_notification, u.nom_utilisateur 
+                          FROM notification n 
+                          JOIN utilisateur u ON n.id_utilisateur = u.id_utilisateur
+                          WHERE n.id_utilisateur = :user_id 
+                          ORDER BY n.date_notification DESC");
 $query->bindParam(':user_id', $user_id);
 $query->execute();
 $notifications = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -192,11 +196,6 @@ $total_notifications = count($notifications);
                                 <?php foreach ($notifications as $notification): ?>
                                     <a href="javascript: void(0);" class="text-reset notification-item">
                                         <div class="d-flex">
-                                            <div class="avatar-xs me-3">
-                                                <span class="avatar-title bg-success rounded-circle font-size-16">
-                                                    <i class="bx bx-badge-check"></i>
-                                                </span>
-                                            </div>
                                             <div class="flex-grow-1">
                                                 <h6 class="mb-1"><?= htmlspecialchars($notification['message']) ?></h6>
                                                 <div class="font-size-12 text-muted">
