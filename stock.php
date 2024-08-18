@@ -113,7 +113,7 @@ $total_envois = count($envois);
                                                                 <div class="mb-3">
                                                                     <label for="id_utilisateur" class="form-label">Bureau de destination</label>
                                                                     <select class="form-select" name="id_utilisateur" id="id_utilisateur" required>
-                                                                        <option value="">Sélectionner un utilisateur</option>
+                                                                        <option value="">Sélectionner un Bureau</option>
                                                                         <?php foreach ($autres_utilisateurs as $utilisateur): ?>
                                                                             <option value="<?= $utilisateur['id_utilisateur'] ?>"><?= $utilisateur['nom_utilisateur'] ?></option>
                                                                         <?php endforeach; ?>
