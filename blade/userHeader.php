@@ -103,6 +103,13 @@ $notifications = $query->fetchAll(PDO::FETCH_ASSOC);
 
 // Nombre total de notifications
 $total_notifications = count($notifications);
+// Récupérer le nombre total de colis enregistrés par l'utilisateur connecté
+$query = $conn->prepare("SELECT COUNT(*) as total_colis FROM colis WHERE created_by = :user_id");
+$query->bindParam(':user_id', $user_id);
+$query->execute();
+$result = $query->fetch(PDO::FETCH_ASSOC);
+
+$total_colis = $result['total_colis'];
 ?>
 
 

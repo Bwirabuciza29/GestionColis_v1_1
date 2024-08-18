@@ -12,7 +12,7 @@ include("./blade/userAside.php")
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0 font-size-18">Gestion Compte</h4>
+                        <h4 class="mb-sm-0 font-size-18">Gestion Colis</h4>
                     </div>
                 </div>
             </div>
@@ -21,33 +21,14 @@ include("./blade/userAside.php")
             <div class="row">
                 <div class="col-xl">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mini-stats-wid">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Sorties</p>
-                                            <h4 class="mb-0">1</h4>
-                                        </div>
 
-                                        <div class="flex-shrink-0 align-self-center">
-                                            <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
-                                                <span class="avatar-title">
-                                                    <i class="bx bx-copy-alt font-size-24"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <div class="card mini-stats-wid">
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Entrées</p>
-                                            <h4 class="mb-0">1</h4>
+                                            <p class="text-muted fw-medium">Colis Enregistrés</p>
+                                            <h4 class="mb-0"><?= htmlspecialchars($total_colis) ?></h4>
                                         </div>
 
                                         <div class="flex-shrink-0 align-self-center ">
@@ -155,7 +136,7 @@ include("./blade/userAside.php")
 
                                     <h4 class="card-title">Nos Utilisateurs</h4>
 
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
+                                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
                                         <thead>
                                             <tr>
                                                 <th>Référence</th>
