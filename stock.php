@@ -111,7 +111,7 @@ $total_envois = count($envois);
                                                         <div class="modal-body">
                                                             <form action="envoyer.php" method="POST">
                                                                 <div class="mb-3">
-                                                                    <label for="id_utilisateur" class="form-label">Utilisateur Destinataire</label>
+                                                                    <label for="id_utilisateur" class="form-label">Bureau de destination</label>
                                                                     <select class="form-select" name="id_utilisateur" id="id_utilisateur" required>
                                                                         <option value="">Sélectionner un utilisateur</option>
                                                                         <?php foreach ($autres_utilisateurs as $utilisateur): ?>
@@ -199,16 +199,12 @@ $total_envois = count($envois);
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="photoModalLabel<?= $envoi['id']; ?>">Photo du Colis</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
+
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <img src="<?= $envoi['photo']; ?>" class="img-fluid" alt="Photo du colis">
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
