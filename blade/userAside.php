@@ -23,13 +23,13 @@
                 <li>
                     <a href="colis.php" class="waves-effect">
                         <i class="bx bx-store"></i>
-                        <span key="t-calendar">Stock</span>
+                        <span key="t-calendar">Gestion Colis</span>
                     </a>
                 </li>
                 <li>
                     <a href="stock.php" class="waves-effect">
                         <i class="bx bx-store"></i>
-                        <span key="t-calendar">Nos Transfert</span>
+                        <span key="t-calendar">Stock Arrivant</span>
                     </a>
                 </li>
 
