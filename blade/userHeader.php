@@ -90,8 +90,15 @@ $query->bindParam(':user_id', $user_id);
 $query->execute();
 $colis = $query->fetchAll(PDO::FETCH_ASSOC);
 
-// Compter le nombre de colis enregistrés
-$nombre_colis = count($colis);
+// Récupérer les notifications pour l'utilisateur connecté
+$user_id = $_SESSION['user_id'];
+$query = $conn->prepare("SELECT * FROM notification WHERE id_utilisateur = :user_id ORDER BY date_notification DESC");
+$query->bindParam(':user_id', $user_id);
+$query->execute();
+$notifications = $query->fetchAll(PDO::FETCH_ASSOC);
+
+// Nombre total de notifications
+$total_notifications = count($notifications);
 ?>
 
 
@@ -161,70 +168,48 @@ $nombre_colis = count($colis);
                 </div>
 
                 <div class="d-flex">
-                    <div class="dropdown d-none d-lg-inline-block ms-1">
-                        <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
-                            <i class="bx bx-fullscreen"></i>
-                        </button>
-                    </div>
-
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="bx bx-bell bx-tada"></i>
-                            <span class="badge bg-danger rounded-pill">3</span>
+                            <span class="badge bg-danger rounded-pill"><?= htmlspecialchars($total_notifications) ?></span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                             aria-labelledby="page-header-notifications-dropdown">
                             <div class="p-3">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h6 class="m-0" key="t-notifications"> Notifications </h6>
+                                        <h6 class="m-0">Notifications</h6>
                                     </div>
                                     <div class="col-auto">
-                                        <a href="#!" class="small" key="t-view-all"> View All</a>
+                                        <a href="#" class="small">Voir tout</a>
                                     </div>
                                 </div>
                             </div>
                             <div data-simplebar style="max-height: 230px;">
-                                <a href="javascript: void(0);" class="text-reset notification-item">
-                                    <div class="d-flex">
-                                        <div class="avatar-xs me-3">
-                                            <span class="avatar-title bg-success rounded-circle font-size-16">
-                                                <i class="bx bx-badge-check"></i>
-                                            </span>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-1" key="t-shipped">Your item is shipped</h6>
-                                            <div class="font-size-12 text-muted">
-                                                <p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
-                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 min ago</span></p>
+                                <?php foreach ($notifications as $notification): ?>
+                                    <a href="javascript: void(0);" class="text-reset notification-item">
+                                        <div class="d-flex">
+                                            <div class="avatar-xs me-3">
+                                                <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                    <i class="bx bx-badge-check"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1"><?= htmlspecialchars($notification['message']) ?></h6>
+                                                <div class="font-size-12 text-muted">
+                                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span><?= htmlspecialchars($notification['date_notification']) ?></span></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-
+                                    </a>
+                                <?php endforeach; ?>
                             </div>
                             <div class="p-2 border-top d-grid">
-                                <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                                    <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">View More..</span>
+                                <a class="btn btn-sm btn-link font-size-14 text-center" href="#">
+                                    <i class="mdi mdi-arrow-right-circle me-1"></i> Voir plus..
                                 </a>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <!-- <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
-                                alt="Header Avatar"> -->
-                            <span class="d-none d-xl-inline-block ms-1" key="t-henry"><?php echo htmlspecialchars($user_name); ?></span>
-                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="logout.php"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Déconnexion</span></a>
                         </div>
                     </div>
                 </div>
