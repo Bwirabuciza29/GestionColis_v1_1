@@ -2,8 +2,8 @@
 // Informations de connexion à la base de données
 $host = 'localhost';
 $dbname = 'gestioncolis';
-$username = 'root';
-$password = '';
+$username = 'kab';
+$password = '1234';
 
 // Créer une connexion à la base de données
 try {
