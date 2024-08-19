@@ -54,7 +54,7 @@ include("./blade/userAside.php")
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="mySmallModalLabel">Enregistrer Utilisateur</h5>
+                                                            <h5 class="modal-title" id="mySmallModalLabel">Enregistrer Colis</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
