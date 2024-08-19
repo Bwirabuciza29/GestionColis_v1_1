@@ -117,8 +117,7 @@ include("./blade/userAside.php")
                                             <td><?= htmlspecialchars($c['montantPaye']); ?></td>
                                             <td><?= htmlspecialchars($c['poids']); ?></td>
                                             <td>
-                                                <!-- Bouton pour afficher la photo -->
-                                                <a href="invoice.php" class="btn btn-info btn-sm">voir reçu</a>
+                                                <a href="invoice.php?id=<?= htmlspecialchars($c['id_colis']); ?>" class="btn btn-info btn-sm">voir reçu</a>
                                             </td>
                                         </tr>
 
