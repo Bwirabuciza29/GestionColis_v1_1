@@ -63,7 +63,26 @@ include("./blade/userAside.php")
                                                                     <label for="reference_colis" class="form-label">Référence Colis</label>
                                                                     <input type="text" class="form-control" id="reference_colis" name="reference_colis" value="<?= htmlspecialchars($reference_colis); ?>" readonly>
                                                                 </div>
-
+                                                                <div class="form-group">
+                                                                    <label for="nomExpediteur">Nom de l'Expéditeur</label>
+                                                                    <input type="text" class="form-control" name="nomExpediteur" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="telExpediteur">Téléphone de l'Expéditeur</label>
+                                                                    <input type="number" class="form-control" name="telExpediteur" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="nomDestinateur">Nom du Destinataire</label>
+                                                                    <input type="text" class="form-control" name="nomDestinateur" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="telDestinataire">Téléphone du Destinataire</label>
+                                                                    <input type="number" class="form-control" name="telDestinataire" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="montantPaye">Montant Payé</label>
+                                                                    <input type="number" class="form-control" name="montantPaye" required>
+                                                                </div>
                                                                 <div class="mb-3">
                                                                     <label for="description" class="form-label">Description</label>
                                                                     <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
@@ -141,9 +160,10 @@ include("./blade/userAside.php")
                                             <tr>
                                                 <th>Référence</th>
                                                 <th>Description</th>
+                                                <th>Nom Expéditeur</th>
+                                                <th>Nom Destinataire</th>
+                                                <th>Montant Payé ($)</th>
                                                 <th>Poids (kg)</th>
-                                                <th>Date Embarquement</th>
-                                                <th>Date Arrivée</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -152,9 +172,10 @@ include("./blade/userAside.php")
                                                 <tr>
                                                     <td><?= htmlspecialchars($c['reference_colis']); ?></td>
                                                     <td><?= htmlspecialchars($c['description']); ?></td>
+                                                    <td><?= htmlspecialchars($c['nomExpediteur']); ?></td>
+                                                    <td><?= htmlspecialchars($c['nomDestinateur']); ?></td>
+                                                    <td><?= htmlspecialchars($c['montantPaye']); ?></td>
                                                     <td><?= htmlspecialchars($c['poids']); ?></td>
-                                                    <td><?= htmlspecialchars($c['date_embarquement']); ?></td>
-                                                    <td><?= htmlspecialchars($c['date_arrivee']); ?></td>
                                                     <td>
                                                         <!-- Bouton pour afficher la photo -->
                                                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#photoModal<?= $c['id_colis']; ?>">Voir Photo</button>

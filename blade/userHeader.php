@@ -45,6 +45,11 @@ $reference_colis = genererReferenceColis($conn);
 // Gérer l'enregistrement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire
+    $nomExpediteur = $_POST['nomExpediteur'];
+    $telExpediteur = $_POST['telExpediteur'];
+    $nomDestinateur = $_POST['nomDestinateur'];
+    $telDestinataire = $_POST['telDestinataire'];
+    $montantPaye = $_POST['montantPaye'];
     $description = $_POST['description'];
     $poids = $_POST['poids'];
     $date_arrivee = $_POST['date_arrivee'];
@@ -61,8 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insérer le colis dans la base de données, incluant le champ `created_by`
-    $query = $conn->prepare("INSERT INTO Colis (reference_colis, description, poids, date_embarquement, date_arrivee, bureau_depart, bureau_arrivee, photo, id_utilisateur, created_by) 
-                             VALUES (:reference_colis, :description, :poids, NOW(), :date_arrivee, :bureau_depart, :bureau_arrivee, :photo, :id_utilisateur, :created_by)");
+    $query = $conn->prepare("INSERT INTO Colis (reference_colis, description, poids, date_embarquement, date_arrivee, bureau_depart, bureau_arrivee, photo, id_utilisateur, created_by, nomExpediteur, telExpediteur, nomDestinateur, telDestinataire, montantPaye) 
+                             VALUES (:reference_colis, :description, :poids, NOW(), :date_arrivee, :bureau_depart, :bureau_arrivee, :photo, :id_utilisateur, :created_by, :nomExpediteur, :telExpediteur, :nomDestinateur, :telDestinataire, :montantPaye)");
     $query->bindParam(':reference_colis', $reference_colis);
     $query->bindParam(':description', $description);
     $query->bindParam(':poids', $poids);
@@ -72,6 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query->bindParam(':photo', $photo);
     $query->bindParam(':id_utilisateur', $user_id);
     $query->bindParam(':created_by', $user_id); // `created_by` prend l'ID de l'utilisateur connecté
+    $query->bindParam(':nomExpediteur', $nomExpediteur);
+    $query->bindParam(':telExpediteur', $telExpediteur);
+    $query->bindParam(':nomDestinateur', $nomDestinateur);
+    $query->bindParam(':telDestinataire', $telDestinataire);
+    $query->bindParam(':montantPaye', $montantPaye);
     $query->execute();
 
     // Redirection après l'enregistrement
