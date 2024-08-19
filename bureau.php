@@ -100,10 +100,11 @@ include("./blade/userAside.php")
                                     <tr>
                                         <th>Référence</th>
                                         <th>Description</th>
+                                        <th>Nom Expéditeur</th>
+                                        <th>Nom Destinataire</th>
+                                        <th>Montant Payé ($)</th>
                                         <th>Poids (kg)</th>
-                                        <th>Date Embarquement</th>
-                                        <th>Date Arrivée</th>
-                                        <th>Actions</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -111,12 +112,13 @@ include("./blade/userAside.php")
                                         <tr>
                                             <td><?= htmlspecialchars($c['reference_colis']); ?></td>
                                             <td><?= htmlspecialchars($c['description']); ?></td>
+                                            <td><?= htmlspecialchars($c['nomExpediteur']); ?></td>
+                                            <td><?= htmlspecialchars($c['nomDestinateur']); ?></td>
+                                            <td><?= htmlspecialchars($c['montantPaye']); ?></td>
                                             <td><?= htmlspecialchars($c['poids']); ?></td>
-                                            <td><?= htmlspecialchars($c['date_embarquement']); ?></td>
-                                            <td><?= htmlspecialchars($c['date_arrivee']); ?></td>
                                             <td>
                                                 <!-- Bouton pour afficher la photo -->
-                                                <a href="invoice.php" class="btn btn-info btn-sm">imprimer</a>
+                                                <a href="invoice.php" class="btn btn-info btn-sm">voir reçu</a>
                                             </td>
                                         </tr>
 
