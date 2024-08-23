@@ -31,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         header("Location: bureau.php");
                     } else if ($user['role'] == 'Employé') {
                         header("Location: home.php");
+                    } else if ($user['role'] == 'Comptable') {
+                        header("Location: comptable.php");
                     }
                     exit;
                 } else {
