@@ -20,7 +20,7 @@
                 <li class="menu-title" key="t-apps">Gestion Bureau</li>
 
                 <li>
-                    <a href="shop.php" class="waves-effect">
+                    <a href="user.php" class="waves-effect">
                         <i class="bx bx-store"></i>
                         <span key="t-calendar">Nos bureaux</span>
                     </a>
