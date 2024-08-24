@@ -2,7 +2,6 @@
 <div class="vertical-menu">
 
     <div data-simplebar class="h-100">
-
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
@@ -15,8 +14,6 @@
                         <span key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
-
-
                 <li class="menu-title" key="t-apps">Gestion Colis</li>
 
 
