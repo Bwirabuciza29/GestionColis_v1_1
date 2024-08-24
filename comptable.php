@@ -1,6 +1,6 @@
 <?php
-include("./blade/asideHome.php");
-include("./blade/userAside.php")
+include("./blade/ComptHeader.php");
+include("./blade/ComptAside.php")
 ?>
 <!-- ============================================================== -->
 <!-- Start right Content here -->
@@ -14,22 +14,41 @@ include("./blade/userAside.php")
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0 font-size-18">Gestion Compte</h4>
+                        <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
                     </div>
                 </div>
             </div>
             <!-- end page title -->
 
             <div class="row">
-                <div class="col-xl">
+                <div class="col-xl-4">
+                    <div class="card overflow-hidden">
+                        <div class="bg-primary bg-soft">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="text-primary p-3">
+                                        <h5 class="text-primary">Bienvenue !</h5>
+                                        <p><?php echo htmlspecialchars($user_name); ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-5 align-self-end">
+                                    <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-xl-8">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card mini-stats-wid">
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Bureau</p>
-                                            <h4 class="mb-0">2</h4>
+                                            <p class="text-muted fw-medium">Colis enregistrés</p>
+                                            <h4 class="mb-0"><?= htmlspecialchars($total_colis) ?></h4>
                                         </div>
 
                                         <div class="flex-shrink-0 align-self-center">
@@ -43,13 +62,13 @@ include("./blade/userAside.php")
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <div class="card mini-stats-wid">
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Administrateur</p>
-                                            <h4 class="mb-0">1</h4>
+                                            <p class="text-muted fw-medium">Colis Reçus</p>
+                                            <h4 class="mb-0"><?= $total_envois; ?></h4>
                                         </div>
 
                                         <div class="flex-shrink-0 align-self-center ">
@@ -63,98 +82,58 @@ include("./blade/userAside.php")
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card mini-stats-wid">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Enregistrer Utilisateur</p>
-                                            <button type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm">Small modal</button>
-                                            <!--  Small modal example -->
-                                            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-sm">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="mySmallModalLabel">Enregistrer Utilisateur</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Cras mattis consectetur purus sit amet fermentum.
-                                                                Cras justo odio, dapibus ac facilisis in,
-                                                                egestas eget quam. Morbi leo risus, porta ac
-                                                                consectetur ac, vestibulum at eros.</p>
-                                                            <p>Praesent commodo cursus magna, vel scelerisque
-                                                                nisl consectetur et. Vivamus sagittis lacus vel
-                                                                augue laoreet rutrum faucibus dolor auctor.</p>
-                                                            <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur.
-                                                                Praesent commodo cursus magna, vel scelerisque
-                                                                nisl consectetur et. Donec sed odio dui. Donec
-                                                                ullamcorper nulla non metus auctor
-                                                                fringilla.</p>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
-                                        </div>
 
-                                        <div class="flex-shrink-0 align-self-center">
-                                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                                <span class="avatar-title rounded-circle bg-primary">
-                                                    <i class="bx bx-purchase-tag-alt font-size-24"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-
-                                    <h4 class="card-title">Nos Utilisateurs</h4>
-                                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </thead>
-
-
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>
-                                                    <a type="button" class="btn btn-outline-primary waves-effect waves-light">modifier</a>
-                                                    <a type="button" class="btn btn-outline-danger waves-effect waves-light">supprimer</a>
-
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div> <!-- end col -->
-                    </div>
+                    <!-- end row -->
 
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="card-title">Nos Utilisateurs</h4>
+
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Référence</th>
+                                        <th>Description</th>
+                                        <th>Nom Expéditeur</th>
+                                        <th>Nom Destinataire</th>
+                                        <th>Montant Payé ($)</th>
+                                        <th>Poids (kg)</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($colis as $c): ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($c['reference_colis']); ?></td>
+                                            <td><?= htmlspecialchars($c['description']); ?></td>
+                                            <td><?= htmlspecialchars($c['nomExpediteur']); ?></td>
+                                            <td><?= htmlspecialchars($c['nomDestinateur']); ?></td>
+                                            <td><?= htmlspecialchars($c['montantPaye']); ?></td>
+                                            <td><?= htmlspecialchars($c['poids']); ?></td>
+                                            <td>
+                                                <a href="invo.php?id=<?= htmlspecialchars($c['id_colis']); ?>" class="btn btn-info btn-sm">voir reçu</a>
+                                            </td>
+                                        </tr>
+
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
         </div>
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-
     <!-- end modal -->
 
 
@@ -176,8 +155,6 @@ include("./blade/userAside.php")
 <!-- END layout-wrapper -->
 
 
-<!-- Right bar overlay-->
-<div class="rightbar-overlay"></div>
 <?php
 include("./blade/Footer.php");
 ?>
